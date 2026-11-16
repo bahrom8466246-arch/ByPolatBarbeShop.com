@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bypolat — турецкий барбершоп в Ташкенте</title>
+<meta name="description" content="Bypolat Türk Erkek Kuaförü — стрижки, бритьё опасной бритвой с горячим полотенцем, уход за бородой. Юнусабад, Ташкент.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,800;1,6..96,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0a09;--ink2:#15120f;--ivory:#f3ece0;--red:#c8302a;--gold:#b8935a;--serif:'Bodoni Moda',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;--pad:clamp(20px,5vw,80px);--ease:cubic-bezier(.19,1,.22,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--ivory);font:400 17px/1.65 var(--sans);overflow-x:hidden}
+body:not(.ready){overflow:hidden}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+::selection{background:var(--red);color:var(--ivory)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+#bar{position:fixed;top:0;left:0;height:3px;background:var(--red);width:0;z-index:80}
+
+/* preloader */
+#pre{position:fixed;inset:0;z-index:100;display:grid;place-items:center;pointer-events:none}
+#pre::before,#pre::after{content:"";position:absolute;left:0;right:0;height:50.5%;background:var(--ink);transition:transform 1.1s var(--ease) .15s}
+#pre::before{top:0}#pre::after{bottom:0}
+.ready #pre::before{transform:translateY(-101%)}.ready #pre::after{transform:translateY(101%)}
+#pre div{position:relative;z-index:2;text-align:center;font:italic 500 clamp(20px,3vw,30px) var(--serif);color:var(--gold);transition:opacity .4s}
+#pre b{display:block;font:800 clamp(70px,14vw,160px)/1 var(--serif);color:var(--ivory);font-style:normal}
+.ready #pre div{opacity:0}
+
+/* cursor */
+.cur{position:fixed;top:0;left:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--ivory);mix-blend-mode:difference;z-index:95;pointer-events:none;transition:width .3s var(--ease),height .3s var(--ease),margin .3s var(--ease)}
+.cur.h{width:64px;height:64px;margin:-32px 0 0 -32px}
+@media(hover:none){.cur{display:none}}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px var(--pad);mix-blend-mode:difference}
+.logo{font:800 22px var(--serif);letter-spacing:.04em}
+nav ul{display:flex;gap:34px;list-style:none;font-size:14px;font-weight:500}
+nav ul a{position:relative}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
+.tel{font-weight:700;font-size:14px;border:1px solid currentColor;border-radius:99px;padding:10px 20px}
+
+/* hero */
+.hero{min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:120px var(--pad) 40px;overflow:hidden;background:radial-gradient(60% 55% at 72% 38%,#2a1512 0,transparent 70%),var(--ink)}
+.hero .top{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:2vw}
+.hero p{max-width:30ch;font-size:18px;opacity:0;transform:translateY(20px);transition:all 1.2s var(--ease) 1.6s}
+.ready .hero p,.ready .hero .st{opacity:.85;transform:none}
+.st{display:flex;align-items:center;gap:10px;font-size:14px;opacity:0;transition:opacity 1.2s 1.8s}
+.dot{width:9px;height:9px;border-radius:50%;background:#777}
+.st.open .dot{background:#4fd18b;animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(79,209,139,.7)}80%,100%{box-shadow:0 0 0 12px rgba(79,209,139,0)}}
+h1{font:800 clamp(64px,21.5vw,380px)/.8 var(--serif);letter-spacing:-.04em;display:flex;margin-left:-.04em;white-space:nowrap}
+h1 span{display:block;overflow:hidden;padding:.06em 0 .12em}
+h1 i{display:block;font-style:normal;transform:translateY(110%) rotate(6deg);transition:transform 1.3s var(--ease);transition-delay:calc(.9s + var(--i)*.07s)}
+.ready h1 i{transform:none}
+h1 span:nth-child(3) i,h1 span:nth-child(7) i{color:var(--red)}
+.scis{position:absolute;right:calc(var(--pad) + 2vw);top:14vh;width:clamp(170px,26vw,400px);transition:transform .3s linear;fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round}
+.scis .d{stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 2.4s var(--ease) 1s}
+.ready .scis .d{stroke-dashoffset:0}
+.scis .a,.scis .b{transform-box:view-box;transform-origin:100px 66px}
+.ready .scis .a{animation:sa 3.6s ease-in-out 3s infinite}.ready .scis .b{animation:sb 3.6s ease-in-out 3s infinite}
+@keyframes sa{0%,70%,100%{transform:none}80%{transform:rotate(-9deg)}90%{transform:rotate(1deg)}}
+@keyframes sb{0%,70%,100%{transform:none}80%{transform:rotate(9deg)}90%{transform:rotate(-1deg)}}
+.badge{position:absolute;left:var(--pad);top:18vh;width:120px;animation:rot 22s linear infinite;fill:var(--gold);font:500 11.5px var(--sans);letter-spacing:.2em}
+@keyframes rot{to{transform:rotate(360deg)}}
+
+/* marquee */
+.mq{background:var(--ivory);color:var(--ink);overflow:hidden;white-space:nowrap;padding:22px 0;transform:rotate(-1.4deg) scale(1.03);margin:-10px 0}
+.mq div{display:inline-block;animation:m 40s linear infinite;font:italic 500 clamp(30px,5vw,64px) var(--serif)}
+.mq span{margin:0 28px}.mq em{color:var(--red);font-style:normal}
+@keyframes m{to{transform:translateX(-50%)}}
+
+section{padding:clamp(90px,14vw,190px) var(--pad)}
+.eyebrow{font-size:14px;color:var(--gold);margin-bottom:26px}
+
+/* manifesto */
+.mf{font:500 clamp(30px,5.2vw,78px)/1.12 var(--serif);max-width:20em;letter-spacing:-.01em}
+.mf .w{opacity:.16;transition:opacity .4s}.mf .w.on{opacity:1}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;margin-top:90px}
+.facts div{border-top:1px solid rgba(243,236,224,.25);padding-top:18px}
+.facts b{display:block;font:800 clamp(40px,5vw,70px)/1 var(--serif);color:var(--gold)}
+.facts span{opacity:.7;font-size:15px}
+
+/* services */
+#services{background:var(--red);border-radius:36px 36px 0 0}
+#services .eyebrow{color:var(--ivory);opacity:.8}
+h2{font:800 clamp(44px,8vw,120px)/.95 var(--serif);letter-spacing:-.03em;margin-bottom:60px}
+.acc{border-top:1px solid rgba(243,236,224,.4)}
+.acc:last-child{border-bottom:1px solid rgba(243,236,224,.4)}
+.acc>button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:30px 0;text-align:left;transition:padding .6s var(--ease)}
+.acc:hover>button{padding-left:24px}
+.acc h3{font:500 clamp(30px,5vw,72px)/1 var(--serif);letter-spacing:-.02em}
+.acc small{font-size:14px;opacity:.75;white-space:nowrap}
+.pl{width:44px;height:44px;border:1px solid var(--ivory);border-radius:50%;position:relative;flex:none;transition:transform .6s var(--ease),background .3s}
+.pl::before,.pl::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:1.5px;background:var(--ivory);transform:translate(-50%,-50%);transition:.4s}
+.pl::after{transform:translate(-50%,-50%) rotate(90deg)}
+.acc.o .pl{transform:rotate(135deg);background:var(--ivory)}.acc.o .pl::before,.acc.o .pl::after{background:var(--red)}
+.body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .8s var(--ease)}
+.acc.o .body{grid-template-rows:1fr}
+.body ul{overflow:hidden;list-style:none;display:flex;flex-wrap:wrap;gap:12px}
+.body li{border:1px solid rgba(243,236,224,.6);border-radius:99px;padding:9px 20px;font-size:16px;transition:background .3s,color .3s}
+.body li:hover{background:var(--ivory);color:var(--red)}
+.acc.o .body ul{padding-bottom:36px}
+
+/* reviews */
+.rv{display:grid;min-height:340px}
+.rv blockquote{grid-area:1/1;font:italic 500 clamp(30px,5.4vw,80px)/1.12 var(--serif);letter-spacing:-.015em;opacity:0;transform:translateY(40px);transition:all 1s var(--ease);pointer-events:none;max-width:17em}
+.rv blockquote.on{opacity:1;transform:none;pointer-events:auto}
+.rv cite{display:block;margin-top:30px;font:500 15px var(--sans);font-style:normal;color:var(--gold)}
+.dots{display:flex;gap:10px;margin-top:40px}
+.dots button{width:44px;height:3px;background:rgba(243,236,224,.25);position:relative;overflow:hidden}
+.dots button.on::after{content:"";position:absolute;inset:0;background:var(--red);animation:fill 6s linear}
+@keyframes fill{from{transform:translateX(-100%)}}
+
+/* contact */
+#contact{background:var(--ivory);color:var(--ink);border-radius:36px 36px 0 0}
+#contact .eyebrow{color:var(--red)}
+.phone{display:block;font:800 clamp(38px,9.6vw,150px)/1 var(--serif);letter-spacing:-.04em;margin-bottom:70px;transition:color .4s}
+.phone:hover{color:var(--red)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:50px}
+.cols h4{font:500 italic 26px var(--serif);margin-bottom:16px}
+.hrs{list-style:none}
+.hrs li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(11,10,9,.15)}
+.hrs .t{color:var(--red);font-weight:700}.hrs .x span:last-child{opacity:.5}
+.mb{display:inline-block;margin-top:26px;background:var(--ink);color:var(--ivory);padding:18px 34px;border-radius:99px;font-weight:700;transition:background .4s}
+.mb:hover{background:var(--red)}
+footer{background:var(--ivory);color:var(--ink);padding:26px var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:14px;border-top:1px solid rgba(11,10,9,.15)}
+
+.rise{opacity:0;transform:translateY(50px);transition:opacity 1.1s,transform 1.1s var(--ease)}
+.rise.in{opacity:1;transform:none}
+
+/* ===== extra motion ===== */
+nav{transition:transform .7s var(--ease)}nav.hide{transform:translateY(-110%)}
+#spot{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(520px circle at var(--mx,72%) var(--my,38%),rgba(200,48,42,.2),transparent 62%)}
+.hero .top,.hero h1{position:relative;z-index:1}
+.eyebrow{display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";height:1px;width:0;background:currentColor;transition:width 1.2s var(--ease) .4s}
+.eyebrow.in::before{width:44px}
+.hx .hw{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .12em;margin-bottom:-.12em}
+.hx .hw i{display:inline-block;font-style:normal;transform:translateY(110%) rotate(4deg);transition:transform 1.1s var(--ease);transition-delay:calc(var(--w)*90ms)}
+.hx.in .hw i{transform:none}
+.body li{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .6s var(--ease),background .3s,color .3s}
+.acc.o .body li{opacity:1;transform:none;transition-delay:calc(var(--k)*45ms + 250ms),calc(var(--k)*45ms + 250ms),0s,0s}
+.pole{position:absolute;top:0;left:0;right:0;height:14px;background:repeating-linear-gradient(-45deg,var(--red) 0 28px,var(--ivory) 28px 56px);background-size:79.2px 79.2px;animation:pole 2.4s linear infinite}
+@keyframes pole{to{background-position-x:79.2px}}
+
+/* ===== booking ===== */
+[hidden]{display:none!important}
+#booking{background:var(--ink2);position:relative;overflow:hidden}
+.bk{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,7vw,120px);align-items:start}
+.bk h2{font-size:clamp(44px,7.4vw,112px);margin-bottom:30px}
+.bk .lead{max-width:30ch;opacity:.75}
+.bk .meta{margin-top:34px;list-style:none;display:grid;gap:12px;font-size:15px}
+.bk .meta li{display:flex;gap:12px;align-items:center}
+.bk .meta li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);flex:none}
+.f{position:relative;margin-bottom:34px}
+.f input,.f select{width:100%;background:none;border:0;border-bottom:1px solid rgba(243,236,224,.3);padding:24px 0 10px;color:var(--ivory);font:500 20px var(--sans);outline:0;border-radius:0;color-scheme:dark;transition:border-color .4s}
+.f select{appearance:none;-webkit-appearance:none;cursor:pointer;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23f3ece0' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 4px center}
+.f option,.f optgroup{background:#15120f;color:var(--ivory)}
+.f label{position:absolute;left:0;top:24px;font-size:18px;opacity:.55;pointer-events:none;transition:top .5s var(--ease),font-size .5s var(--ease),color .3s,opacity .3s,letter-spacing .5s}
+.f input:focus+label,.f input:not(:placeholder-shown)+label,.fl label{top:0;font-size:13px;color:var(--gold);opacity:1;letter-spacing:.06em}
+.f::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.f:focus-within::after{transform:scaleX(1)}
+input[type=date]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.6;cursor:pointer}
+.tl{margin-bottom:34px}
+.tl>span{display:block;font-size:13px;letter-spacing:.06em;color:var(--gold);margin-bottom:14px}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:10px;min-height:46px}
+.slot{border:1px solid rgba(243,236,224,.3);border-radius:99px;padding:10px 0;font-size:15px;font-weight:500;animation:sIn .7s var(--ease) both;animation-delay:calc(var(--k)*28ms);transition:background .3s,border-color .3s}
+@keyframes sIn{from{opacity:0;transform:translateY(14px) scale(.94)}}
+.slot:not(:disabled):hover{border-color:var(--gold)}
+.slot.sel{background:var(--red);border-color:var(--red)}
+.slot:disabled{opacity:.22;cursor:not-allowed;text-decoration:line-through}
+.hint{grid-column:1/-1;opacity:.55;font-size:15px}
+.hp{position:absolute;left:-9999px;width:0;height:0;opacity:0}
+.err{min-height:1.6em;color:#ff8a82;font-size:15px;margin-bottom:14px}
+.sub{display:inline-flex;align-items:center;gap:12px;position:relative;overflow:hidden;background:var(--red);color:var(--ivory);padding:20px 46px;border-radius:99px;font-weight:700;font-size:17px;isolation:isolate;transition:color .4s}
+.sub::before{content:"";position:absolute;inset:0;background:var(--ivory);transform:translateY(101%);transition:transform .6s var(--ease);z-index:-1}
+.sub:not(:disabled):hover{color:var(--ink)}.sub:not(:disabled):hover::before{transform:none}
+.sub:disabled{opacity:.7;cursor:wait}
+.sub.load span::after{content:"";display:inline-block;width:14px;height:14px;margin-left:12px;vertical-align:-2px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:rot .7s linear infinite}
+form.shake{animation:shk .45s}
+@keyframes shk{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.ok svg{width:96px;height:96px;fill:none;stroke:var(--gold);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:28px}
+.ok circle{stroke-dasharray:214;stroke-dashoffset:214}.ok path{stroke-dasharray:60;stroke-dashoffset:60}
+.ok.go circle{animation:dr 1s var(--ease) forwards}.ok.go path{animation:dr .6s var(--ease) .7s forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+.ok h3{font:500 clamp(30px,4vw,52px)/1.1 var(--serif);margin-bottom:14px}
+.ok p{opacity:.8;max-width:36ch;margin-bottom:30px}
+.ok.go h3,.ok.go p,.ok.go .sub{animation:up .9s var(--ease) both}
+.ok.go h3{animation-delay:.9s}.ok.go p{animation-delay:1s}.ok.go .sub{animation-delay:1.1s}
+@keyframes up{from{opacity:0;transform:translateY(24px)}}
+@media(max-width:900px){.bk{grid-template-columns:1fr}}
+@media(max-width:760px){nav ul{display:none}.badge{display:none}.scis{top:11vh;right:4vw;width:42vw}.acc small{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}.rise,.mf .w{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div><div class="cur" id="cur"></div>
+<div id="pre"><div><b id="pc">0</b>Bypolat · Türk Erkek Kuaförü</div></div>
+
+<nav>
+  <a href="#top" class="logo">BYPOLAT</a>
+  <ul><li><a href="#about">О нас</a></li><li><a href="#services">Услуги</a></li><li><a href="#reviews">Отзывы</a></li><li><a href="#booking">Запись</a></li><li><a href="#contact">Контакты</a></li></ul>
+  <a class="tel" href="#booking">Записаться</a>
+</nav>
+
+<header class="hero" id="top">
+  <div id="spot" aria-hidden="true"></div>
+  <svg class="badge" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="c" d="M60 60m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs><text><textPath href="#c">TÜRK ERKEK KUAFÖRÜ ✦ TASHKENT ✦ </textPath></text></svg>
+  <svg class="scis" id="scis" viewBox="0 0 200 200" aria-hidden="true">
+    <g class="a"><circle class="d" cx="60" cy="155" r="24"/><path class="d" d="M66 133L128 8"/></g>
+    <g class="b"><circle class="d" cx="140" cy="155" r="24"/><path class="d" d="M134 133L72 8"/></g>
+  </svg>
+  <div class="top">
+    <p>Классическая турецкая школа: стрижки, бритьё опасной бритвой и уход за бородой в Юнусабаде.</p>
+    <div class="st" id="st"><i class="dot"></i><span></span></div>
+  </div>
+  <h1 id="h1" aria-label="Bypolat"></h1>
+</header>
+
+<div class="mq" aria-hidden="true"><div id="mq"></div></div>
+
+<section id="about">
+  <p class="eyebrow rise">О нас</p>
+  <p class="mf" id="mf">Bypolat — это турецкая мужская парикмахерская в Ташкенте. Мы не торопимся: подбираем форму под вашу внешность, бреем опасной бритвой с горячим полотенцем и заканчиваем уходом за кожей головы и бородой.</p>
+  <div class="facts">
+    <div class="rise"><b data-n="5.0">5,0</b><span>оценка клиентов на Google Картах</span></div>
+    <div class="rise"><b data-n="24">24</b><span>услуги — от fade до пакета для жениха</span></div>
+    <div class="rise"><b>11–23</b><span>открыто со вторника по воскресенье</span></div>
+  </div>
+</section>
+
+<section id="services">
+  <p class="eyebrow rise">Услуги</p>
+  <h2 class="hx">Что мы делаем</h2>
+  <div id="acc"></div>
+</section>
+
+<section id="reviews">
+  <p class="eyebrow rise">Отзывы</p>
+  <div class="rv" id="rv">
+    <blockquote class="on">Я водила сюда сына, и мы стали постоянными клиентами. Рекомендуем с полной уверенностью.<cite>Aysun Yilmaz · ★★★★★</cite></blockquote>
+    <blockquote>Если вы ищете качественное бритьё, вам сюда.<cite>Eren Gurer · ★★★★★</cite></blockquote>
+    <blockquote>Лучше не бывает.<cite>Enes Özkaya · ★★★★★</cite></blockquote>
+  </div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<section id="booking">
+  <div class="pole" aria-hidden="true"></div>
+  <div class="bk">
+    <div>
+      <p class="eyebrow rise">Онлайн-запись</p>
+      <h2 class="hx">Запись</h2>
+      <p class="lead rise">Оставьте имя и номер, выберите день и время. Мы перезвоним и подтвердим визит.</p>
+      <ul class="meta rise"><li>Вторник – воскресенье, 11:00 – 23:00</li><li>Подтверждаем по телефону</li></ul>
+    </div>
+    <div class="rise">
+      <form id="bf" novalidate>
+        <div class="f"><input id="bn" name="name" type="text" placeholder=" " autocomplete="name" maxlength="60" required><label for="bn">Ваше имя</label></div>
+        <div class="f"><input id="bp" name="phone" type="tel" inputmode="tel" placeholder=" " autocomplete="tel" required><label for="bp">Номер телефона</label></div>
+        <div class="f fl"><select id="bs" name="service"></select><label for="bs">Услуга</label></div>
+        <div class="f fl"><input id="bd" name="date" type="date" required><label for="bd">Дата</label></div>
+        <div class="tl"><span id="tl">Время</span><div class="slots" id="slots" role="group" aria-labelledby="tl"></div></div>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="err" id="be" role="alert"></p>
+        <button class="sub" id="bsub" type="submit"><span>Записаться</span></button>
+      </form>
+      <div class="ok" id="bok" hidden>
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34"/><path d="M24 41l11 11 21-24"/></svg>
+        <h3 id="okh"></h3>
+        <p id="okp"></p>
+        <button class="sub" id="bnew" type="button"><span>Новая запись</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="eyebrow rise">Контакты</p>
+  <a class="phone rise" href="tel:+998971722591">+998 97 172 25 91</a>
+  <div class="cols">
+    <div class="rise"><h4>Адрес</h4><p>Юнусабадский район,<br>жилмассив Кашгар, дом 10,<br>Ташкент</p>
+      <a class="mb" href="https://maps.google.com/?cid=25683096855191714" target="_blank" rel="noopener">Построить маршрут</a></div>
+    <div class="rise"><h4>Часы работы</h4><ul class="hrs" id="hrs"></ul></div>
+  </div>
+</section>
+<footer><span>© <span id="y"></span> Bypolat Türk Erkek Kuaförü</span><span>Ташкент, Узбекистан</span></footer>
+
+<script>
+/* ===== НАСТРОЙКА TELEGRAM =====
+   1) В Telegram откройте @BotFather → /newbot → получите токен.
+   2) Напишите вашему боту любое сообщение, затем откройте в браузере
+      https://api.telegram.org/bot<ТОКЕН>/getUpdates — там будет "chat":{"id":123456789}.
+   3) Вставьте токен и id ниже.
+   Безопасный вариант: задайте endpoint (адрес Cloudflare Worker из файла telegram-worker.js),
+   тогда токен не будет виден в коде страницы — а tgToken/tgChatId оставьте пустыми. */
+var BYPOLAT_CONFIG={tgToken:'9164416674:AAGF91O4wazOhz5e9-sWn8w7Lxt-lMbGjBk',tgChatId:'6174187133',endpoint:''};
+</script>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+// headline letters
+document.querySelectorAll('.hx').forEach(function(h){var t=h.textContent.trim().split(' ');h.setAttribute('aria-label',t.join(' '));h.innerHTML=t.map(function(x,i){return '<span class="hw" aria-hidden="true"><i style="--w:'+i+'">'+x+'</i></span>'}).join(' ')});
+$('#h1').innerHTML='BYPOLAT'.split('').map(function(c,i){return '<span style="--i:'+i+'"><i>'+c+'</i></span>'}).join('');
+
+// preloader
+var n=0,pc=$('#pc');(function t(){n+=reduce?100:Math.ceil(Math.random()*7);if(n>100)n=100;pc.textContent=n;
+ if(n<100)setTimeout(t,45);else setTimeout(function(){document.body.classList.add('ready')},250)})();
+
+// marquee
+var w=['Стрижка','Бритьё опасной бритвой','Борода','Fade','Горячее полотенце','Детские стрижки','Для жениха'],m='';
+w.forEach(function(x){m+='<span>'+x+'</span><span><em>✦</em></span>'});$('#mq').innerHTML=m+m+m+m;
+
+// manifesto words
+var mf=$('#mf');mf.innerHTML=mf.textContent.split(' ').map(function(x){return '<span class="w">'+x+' </span>'}).join('');
+var ws=mf.querySelectorAll('.w');
+
+// services accordion
+var S=[['Стрижки','10 услуг',['Стрижка машинкой','Стрижка ножницами','Стрижка бритвой','Градиент fade','Военные стрижки','Креативные стрижки','Стрижки с рисунком','Длинные волосы','Кудрявые волосы','Детские стрижки']],
+['Борода и бритьё','7 услуг',['Бритьё опасной бритвой','Бритьё с горячим полотенцем','Бритьё головы','Коррекция бороды','Уход за бородой','Кондиционирование бороды','Окрашивание бороды']],
+['Уход','5 услуг',['Мытьё головы и кондиционер','Уход за кожей головы','Окрашивание волос','Стрижка бровей','Восковая эпиляция']],
+['Особый случай','1 услуга',['Пакет услуг для жениха']]];
+$('#acc').innerHTML=S.map(function(s,i){return '<div class="acc rise'+(i?'':' o')+'"><button aria-expanded="'+(!i)+'"><h3>'+s[0]+'</h3><small>'+s[1]+'</small><span class="pl"></span></button><div class="body"><ul>'+s[2].map(function(x,j){return '<li style="--k:'+j+'">'+x+'</li>'}).join('')+'</ul></div></div>'}).join('');
+document.querySelectorAll('.acc>button').forEach(function(b){b.onclick=function(){var a=b.parentNode,o=a.classList.toggle('o');b.setAttribute('aria-expanded',o)}});
+
+// reviews slider
+var q=document.querySelectorAll('#rv blockquote'),d=$('#dots'),k=0,tm;
+q.forEach(function(_,i){var b=document.createElement('button');b.setAttribute('aria-label','Отзыв '+(i+1));b.onclick=function(){go(i)};d.appendChild(b)});
+function go(i){k=i;q.forEach(function(e,j){e.classList.toggle('on',j===i)});[].forEach.call(d.children,function(e,j){e.classList.remove('on');if(j===i){void e.offsetWidth;e.classList.add('on')}});clearTimeout(tm);tm=setTimeout(function(){go((k+1)%q.length)},6000)}
+go(0);
+
+// hours + live status (Asia/Tashkent)
+var D=['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Tashkent'})),dy=now.getDay(),mn=now.getHours()*60+now.getMinutes();
+$('#hrs').innerHTML=[1,2,3,4,5,6,0].map(function(i){return '<li class="'+(i===dy?'t ':'')+(i===1?'x':'')+'"><span>'+D[i]+'</span><span>'+(i===1?'Выходной':'11:00 – 23:00')+'</span></li>'}).join('');
+var st=$('#st'),op=dy!==1&&mn>=660&&mn<1380;st.classList.toggle('open',op);
+st.querySelector('span').textContent=op?'Сейчас открыто до 23:00':(dy===1||dy===0&&mn>=1380?'Откроемся во вторник в 11:00':(mn<660?'Откроемся сегодня в 11:00':'Откроемся завтра в 11:00'));
+$('#y').textContent=new Date().getFullYear();
+
+// scroll: progress bar, manifesto, reveals
+var bar=$('#bar'),tk=0;
+function sc(){var h=document.documentElement,p=scrollY/(h.scrollHeight-innerHeight);bar.style.width=p*100+'%';
+ var r=mf.getBoundingClientRect(),pr=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.25)));
+ var on=Math.round(pr*ws.length);ws.forEach(function(e,i){e.classList.toggle('on',i<on)});par();tk=0}
+addEventListener('scroll',function(){if(!tk)tk=requestAnimationFrame(sc)},{passive:true});sc();
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+document.querySelectorAll('.rise,.hx').forEach(function(e,i){e.style.transitionDelay=(i%3)*90+'ms';io.observe(e)});
+
+
+// count-up for numbers
+var cio=new IntersectionObserver(function(e){e.forEach(function(x){if(!x.isIntersecting)return;cio.unobserve(x.target);if(reduce)return;var el=x.target,to=parseFloat(el.dataset.n),dec=el.dataset.n.indexOf('.')>-1,t0=performance.now();
+ (function f(t){var p=Math.min(1,(t-t0)/1600),v=to*(1-Math.pow(1-p,4));el.textContent=(dec?v.toFixed(1):''+Math.round(v)).replace('.',',');if(p<1)requestAnimationFrame(f)})(t0)})},{threshold:.6});
+document.querySelectorAll('[data-n]').forEach(function(e){cio.observe(e)});
+
+// hero spotlight
+var hero=$('#top'),spot=$('#spot');
+if(!reduce)hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();spot.style.setProperty('--mx',(e.clientX-r.left)+'px');spot.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true});
+
+// scroll parallax + smart nav + marquee speed follows scroll
+var ly=0,vel=0,navEl=$('nav'),h1=$('#h1'),bdg=$('.badge'),sw=$('#scis');
+function par(){if(!navEl)return;var y=scrollY;
+ if(!reduce&&y<innerHeight*1.3){h1.style.translate='0 '+(y*-.12)+'px';bdg.style.translate='0 '+(y*.18)+'px';sw.style.translate='0 '+(y*.1)+'px'}
+ if(y>240&&y>ly+4)navEl.classList.add('hide');else if(y<ly-4||y<=240)navEl.classList.remove('hide');
+ vel+=Math.abs(y-ly);ly=y}
+navEl.addEventListener('focusin',function(){navEl.classList.remove('hide')});
+var mqA=null,rate=1;
+(function mql(){if(!mqA){var a=$('#mq').getAnimations();mqA=a[0]||null}
+ if(mqA&&!reduce){var tgt=1+Math.min(vel*.12,8);vel=0;rate+=(tgt-rate)*.08;mqA.playbackRate=rate}
+ requestAnimationFrame(mql)})();
+
+// ===== booking =====
+var CFG=window.BYPOLAT_CONFIG||{};
+var bf=$('#bf'),bn=$('#bn'),bp=$('#bp'),bs=$('#bs'),bd=$('#bd'),sl=$('#slots'),be=$('#be'),bsub=$('#bsub'),bok=$('#bok'),pick='';
+function p2(n){return n<10?'0'+n:''+n}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+bs.innerHTML='<option value="">Не выбрано (необязательно)</option>'+S.map(function(s){return '<optgroup label="'+s[0]+'">'+s[2].map(function(x){return '<option>'+x+'</option>'}).join('')+'</optgroup>'}).join('');
+var today=now.getFullYear()+'-'+p2(now.getMonth()+1)+'-'+p2(now.getDate()),lim=new Date(now.getTime()+60*864e5);
+bd.min=today;bd.max=lim.getFullYear()+'-'+p2(lim.getMonth()+1)+'-'+p2(lim.getDate());
+function isMon(v){return new Date(v+'T12:00:00').getDay()===1}
+
+bp.addEventListener('focus',function(){if(!bp.value)bp.value='+998 '});
+bp.addEventListener('blur',function(){if(bp.value.replace(/\D/g,'').length<=3)bp.value=''});
+bp.addEventListener('input',function(){var d=bp.value.replace(/\D/g,'');if(d.indexOf('998')===0)d=d.slice(3);d=d.slice(0,9);
+ var o='+998 '+d.slice(0,2);if(d.length>2)o+=' '+d.slice(2,5);if(d.length>5)o+=' '+d.slice(5,7);if(d.length>7)o+=' '+d.slice(7,9);bp.value=o});
+
+function slots(){var v=bd.value,n=0;sl.innerHTML='';pick='';be.textContent='';
+ if(!v||v<today){sl.innerHTML='<p class="hint">Сначала выберите дату</p>';return}
+ if(isMon(v)){sl.innerHTML='<p class="hint">В понедельник выходной — выберите другой день</p>';return}
+ for(var m=660;m<=1350;m+=30){var b=document.createElement('button');b.type='button';b.className='slot';b.textContent=p2(Math.floor(m/60))+':'+p2(m%60);b.style.setProperty('--k',(m-660)/30);
+  if(v===today&&m<=mn+30)b.disabled=true;else n++;
+  b.addEventListener('click',function(){[].forEach.call(sl.children,function(c){c.classList.remove('sel');c.setAttribute('aria-pressed','false')});this.classList.add('sel');this.setAttribute('aria-pressed','true');pick=this.textContent;be.textContent=''});
+  b.addEventListener('mouseenter',function(){cur.classList.add('h')});b.addEventListener('mouseleave',function(){cur.classList.remove('h')});
+  sl.appendChild(b)}
+ if(!n)sl.innerHTML='<p class="hint">На сегодня запись закончена — выберите другой день</p>'}
+bd.addEventListener('change',slots);slots();
+
+function fail(m){be.textContent=m;bf.classList.remove('shake');void bf.offsetWidth;bf.classList.add('shake')}
+function send(text){
+ if(CFG.endpoint)return fetch(CFG.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:text})}).then(function(r){if(!r.ok)throw new Error('endpoint '+r.status)});
+ if(!CFG.tgToken||!CFG.tgChatId||/PASTE_/.test(CFG.tgToken+CFG.tgChatId)){console.warn('Bypolat: Telegram не настроен — заполните BYPOLAT_CONFIG в начале скрипта.');return Promise.reject(new Error('not configured'))}
+ return fetch('https://api.telegram.org/bot'+CFG.tgToken+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CFG.tgChatId,text:text,parse_mode:'HTML',disable_web_page_preview:true})})
+  .then(function(r){return r.json()}).then(function(j){if(!j.ok)throw new Error(j.description||'telegram error')})}
+
+function done(name,human,time){bf.hidden=true;bok.hidden=false;$('#okh').textContent='Спасибо, '+name+'!';$('#okp').textContent='Ждём вас '+human+' в '+time+'. Мы перезвоним, чтобы подтвердить запись.';bok.classList.remove('go');void bok.offsetWidth;bok.classList.add('go')}
+var DN=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+bf.addEventListener('submit',function(e){e.preventDefault();
+ var name=bn.value.trim(),ph=bp.value.replace(/\D/g,''),v=bd.value;
+ var msg=name.length<2?'Введите имя':ph.length!==12?'Введите номер телефона полностью':(!v||v<today)?'Выберите дату':isMon(v)?'В понедельник выходной — выберите другой день':!pick?'Выберите время':'';
+ if(msg){fail(msg);return}
+ var dt=v.split('-'),human=dt[2]+'.'+dt[1]+'.'+dt[0]+' ('+DN[new Date(v+'T12:00:00').getDay()]+')';
+ if(bf.elements.website.value){done(name,human,pick);return}
+ try{var last=+localStorage.getItem('bp_last');if(last&&Date.now()-last<60000){fail('Заявка уже отправлена. Подождите минуту или позвоните нам.');return}}catch(_){}
+ var text='✂️ <b>Новая запись — Bypolat</b>\n\n👤 <b>Имя:</b> '+esc(name)+'\n📞 <b>Телефон:</b> +'+ph+'\n💈 <b>Услуга:</b> '+(esc(bs.value)||'не указана')+'\n📅 <b>Дата:</b> '+human+'\n🕐 <b>Время:</b> '+pick;
+ bsub.disabled=true;bsub.classList.add('load');be.textContent='';
+ send(text).then(function(){try{localStorage.setItem('bp_last',Date.now())}catch(_){}done(name,human,pick)})
+  .catch(function(err){console.error(err);fail('Не удалось отправить заявку. Позвоните нам: +998 97 172 25 91')})
+  .then(function(){bsub.disabled=false;bsub.classList.remove('load')})});
+$('#bnew').addEventListener('click',function(){bf.reset();slots();bok.hidden=true;bf.hidden=false});
+
+// cursor, parallax, magnetic
+var cur=$('#cur'),cx=0,cy=0,mx=0,my=0,sv=$('#scis');
+addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;
+ if(!reduce)sv.style.transform='translate('+((e.clientX/innerWidth-.5)*-30)+'px,'+((e.clientY/innerHeight-.5)*-30)+'px)'},{passive:true});
+(function l(){cx+=(mx-cx)*.2;cy+=(my-cy)*.2;cur.style.transform='translate('+cx+'px,'+cy+'px)';requestAnimationFrame(l)})();
+document.querySelectorAll('a,button').forEach(function(e){e.addEventListener('mouseenter',function(){cur.classList.add('h')});e.addEventListener('mouseleave',function(){cur.classList.remove('h')})});
+document.querySelectorAll('.mb,.tel,.sub').forEach(function(e){e.addEventListener('mousemove',function(ev){var r=e.getBoundingClientRect();e.style.transform='translate('+((ev.clientX-r.left-r.width/2)*.25)+'px,'+((ev.clientY-r.top-r.height/2)*.35)+'px)'});e.addEventListener('mouseleave',function(){e.style.transform=''})});
+})();
+</script>
+</body>
+</html>
